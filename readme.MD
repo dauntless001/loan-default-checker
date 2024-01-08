@@ -1,13 +1,11 @@
-# Equity Share
+# Loan Defaulter checker
 
-Equity Share tokenizes income-producing properties on the Ethereum blockchain and allows retail investors the opportunity to own fractional shares of the property’s value.
-
-Buy, sell, and exchange various Real Estate Tokens backed by specific target assets.
+This project helps to predict if a loan applicant will default or not based on their entries
 
 
 ## Useful links
 
-- [GitHub repo](https://github.com/equitycoin/equityshare)
+- [GitHub repo](https://github.com/dauntless001/loan-default-checker)
 
 ## Requirements
 
@@ -54,7 +52,7 @@ Sometimes you may want to delete your database but don't want to lose your data.
 ### Dev complete
 
 - Once coding is done, run `git commit -m "short description"`
-- If successful, `git push` your code to Gitlab
+- If successful, `git push` your code to Github
 - Create a merge request using the link generated from the terminal
 
 ### Code reviews
@@ -64,10 +62,10 @@ Sometimes you may want to delete your database but don't want to lose your data.
 
 ## Contribution
 
-Pick a ticket on the [Gitlab repository](https://github.com/equitycoin/equityshare). If you haven't cloned the repository, use the command to clone from the terminal
+Pick a ticket on the [Github repository](https://github.com/dauntless001/loan-default-checker). If you haven't cloned the repository, use the command to clone from the terminal
 
 ```sh
-git clone https://github.com/equitycoin/equityshare
+git clone https://github.com/dauntless001/loan-default-checker
 ```
 
 When creating a new branch, **ENSURE** that the branch name starts with the format **LOA-&lt;issue-no&gt;-&lt;short-description&gt;** e.g. **LOA-1-project-setup** and the main branch is from develop. use the command below when creating a new branch.
@@ -85,7 +83,7 @@ git commit -m "my commit message"
 git push -u origin <branch name>
 ```
 
-When creating a pull request, please select the target branch as `develop`.
+When creating a pull request, please select the target branch as `master`.
 
 
 
