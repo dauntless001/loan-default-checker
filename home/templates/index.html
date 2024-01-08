@@ -1,0 +1,189 @@
+{% extends 'partials/_layout.html' %}
+{% load static %}
+
+{% block page_title %}Home{% endblock page_title %}
+{% block body %}
+<div class="row row-height">
+    <div class="col-xl-4 col-lg-4 content-left">
+        <div class="content-left-wrapper">
+            <a href="{% url 'home:index' %}" id="logo"><img src="{% static 'img/logo.png' %}" alt="" width="45" height="45"></a>
+            <div id="social">
+                <ul>
+                    <li><a href="#0"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#0"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#0"><i class="icon-google"></i></a></li>
+                    <li><a href="#0"><i class="icon-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <!-- /social -->
+            <div>
+                <figure><img src="{% static 'img/info_graphic_1.svg' %}" alt="" class="img-fluid" width="270" height="270"></figure>
+                <h2>Check loan eligibility</h2>
+                <p>Say goodbye to uncertainty and hello to approval confidence. Discover your path to financial empowerment</p>
+            </div>
+            <div class="copy">© 2022</div>
+        </div>
+        <!-- /content-left-wrapper -->
+    </div>
+    <!-- /content-left -->
+    <div class="col-xl-8 col-lg-8 content-right" id="start">
+        <div id="wizard_container">
+            <div id="top-wizard">
+                <span id="location"></span>
+                <div id="progressbar"></div>
+            </div>
+            <!-- /top-wizard -->
+            <form id="wrapped" method="post" enctype="multipart/form-data">
+                <input id="website" name="website" type="text" value="">
+                <!-- Leave for security protection, read docs for details -->
+                <div id="middle-wizard">
+                    <div class="step">
+                        <!-- <h2 class="section_title">Loan Application</h2> -->
+                        <h3 class="main_question">Loan info</h3>
+                        <div class="form-group add_top_30">
+                            <label for="term_months">Term Months</label>
+                            <input type="number" name="term_months" id="term_months" class="form-control required" onchange="getVals(this, 'name_field');">
+                        </div>
+                        <div class="form-group">
+                            <label for="home_ownership">Home Ownership</label>
+                            <input type="text" name="home_ownership" id="home_ownership" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="purpose">Purpose</label>
+                            <input type="text" name="purpose" id="purpose" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="address_state">Address state</label>
+                            <input type="text" name="address_state" id="address_state" class="form-control required">
+                        </div>
+                        <div class="form-group add_top_30">
+                            <label for="application_type">Application type</label>
+                            <div class="form-group radio_input">
+                                <label class="container_radio me-3">Verified
+                                    <input type="radio" name="application_type" value="Verified" class="required">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container_radio">Not Verified
+                                    <input type="radio" name="application_type" value="Not Verified" class="required">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /step-->
+                    <div class="step">
+                        <!-- <h2 class="section_title">Loan Application</h2> -->
+                        <h3 class="main_question">Loan info continuation...</h3>
+                        <div class="form-group">
+                            <label for="loan_amount">Loan Amount</label>
+                            <input type="number" name="loan_amount" id="loan_amount" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="emp_length">EMP Length</label>
+                            <input type="text" name="emp_length" id="emp_length" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="annual_inc">Annual Inc</label>
+                            <input type="text" name="annual_inc" id="annual_inc" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="dti">DTI</label>
+                            <input type="text" name="dti" id="dti" class="form-control required">
+                        </div>
+                    </div>
+                    <!-- /step-->
+                    <div class="step">
+                        <!-- <h2 class="section_title">Loan Application</h2> -->
+                        <h3 class="main_question">Loan info continuation...</h3>
+                        <div class="form-group add_top_30">
+                            <label for="delinq_2yrs">Delinq 2yrs</label>
+                            <input type="text" name="delinq_2yrs" id="delinq_2yrs" class="form-control required" onchange="getVals(this, 'name_field');">
+                        </div>
+                        <div class="form-group">
+                            <label for="revol_util">Revol util</label>
+                            <input type="number" name="revol_util" id="revol_util" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="total_acc">Total Acc</label>
+                            <input type="text" name="total_acc" id="total_acc" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="credit_length_yrs">Credit Length (in years)</label>
+                            <input type="text" name="credit_length_yrs" id="credit_length_yrs" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="default_loan">Default Loan</label>
+                            <input type="text" name="default_loan" id="default_loan" class="form-control required">
+                        </div>
+                    </div>
+
+                    <div class="submit step " id="end">
+                        <!-- <h2 class="section_title">Loan Application</h2> -->
+                        <h3 class="main_question">Loan info continuation...</h3>
+                        <div class="form-group add_top_30">
+                            <label for="int_rate">Int Rate</label>
+                            <input type="text" name="int_rate" id="int_rate" class="form-control required" onchange="getVals(this, 'name_field');">
+                        </div>
+                        <div class="form-group">
+                            <label for="remain">Remain</label>
+                            <input type="number" name="remain" id="remain" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="issue_year">Issue Year</label>
+                            <input type="text" name="issue_year" id="issue_year" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label for="cri">CRI</label>
+                            <input type="text" name="cri" id="cri" class="form-control required">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /middle-wizard -->
+                <div id="bottom-wizard">
+                    <button type="button" name="backward" class="backward">Prev</button>
+                    <button type="button" name="forward" class="forward">Next</button>
+                    <button type="submit" name="process" class="submit check-loan">Submit</button>
+                </div>
+                <!-- /bottom-wizard -->
+            </form>
+            <div id="result" class="my-3">
+    
+            </div>
+        </div>
+        <!-- /Wizard container -->
+    </div>
+    <!-- /content-right-->
+</div>
+
+{% endblock body %}
+{% block extra_script %}
+<script>
+    const submitBtn = document.querySelector(".check-loan")
+    submitBtn.addEventListener("click", e => {
+        e.preventDefault()
+        $.ajax({
+            url : "",
+            method : "POST",
+            headers : {
+                "X-CSRFToken" : "{{csrf_token}}"
+            },
+            data : {},
+            success : res => {
+                $("#result").html(`
+                <div class="alert alert-${res.status ? "success" : "danger"} w-100 m-0">
+                    <p class="text-white m-0">${res.msg}</p>
+                </div>
+                `)
+            },
+            error : err => {
+                $("#result").html(`
+                <div class="alert alert-danger w-100 m-0">
+                    <p class="text-white m-0">Error processing result</p>
+                </div>
+                `)
+            }
+        })
+    })
+</script>
+{% endblock extra_script %}
