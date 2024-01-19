@@ -17,11 +17,11 @@ STATIC_URL = "static/"
 
 STATIC_ROOT = BASE_DIR / "assets"
 
-# STATIC_DIR = BASE_DIR / "kcsxw/assets"
+STATIC_DIR = BASE_DIR / "loan/assets"
 
-# STATICFILES_DIRS = [
-#     STATIC_DIR,
-# ]
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 
 MEDIA_URL = "/media/"
 
