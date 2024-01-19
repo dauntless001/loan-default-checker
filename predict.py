@@ -20,7 +20,7 @@ pd.set_option('display.max_columns',100)
 
 
 
-DATA_CSV_PATH = "./Code Ocean.csv"
+DATA_CSV_PATH = "./code-ocean.csv"
 
 df_train = pd.read_csv(DATA_CSV_PATH)
 

@@ -46,7 +46,11 @@
                         </div>
                         <div class="form-group">
                             <label for="home_ownership">Home Ownership</label>
-                            <input type="text" name="home_ownership" id="home_ownership" class="form-control required">
+                            <select name="home_ownership" id="" class="form-select" id="home_ownership">
+                                <option value="MORTGAGE">MORTGAGE</option>
+                                <option value="RENT">RENT</option>
+                                <option value="OWN">OWN</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="purpose">Purpose</label>
@@ -80,15 +84,15 @@
                         </div>
                         <div class="form-group">
                             <label for="emp_length">EMP Length</label>
-                            <input type="text" name="emp_length" id="emp_length" class="form-control required">
+                            <input type="number" name="emp_length" id="emp_length" class="form-control required">
                         </div>
                         <div class="form-group">
                             <label for="annual_inc">Annual Inc</label>
-                            <input type="text" name="annual_inc" id="annual_inc" class="form-control required">
+                            <input type="number" name="annual_inc" id="annual_inc" class="form-control required">
                         </div>
                         <div class="form-group">
                             <label for="dti">DTI</label>
-                            <input type="text" name="dti" id="dti" class="form-control required">
+                            <input type="number" name="dti" id="dti" class="form-control required">
                         </div>
                     </div>
                     <!-- /step-->
@@ -97,7 +101,7 @@
                         <h3 class="main_question">Loan info continuation...</h3>
                         <div class="form-group add_top_30">
                             <label for="delinq_2yrs">Delinq 2yrs</label>
-                            <input type="text" name="delinq_2yrs" id="delinq_2yrs" class="form-control required" onchange="getVals(this, 'name_field');">
+                            <input type="number" name="delinq_2yrs" id="delinq_2yrs" class="form-control required" onchange="getVals(this, 'name_field');">
                         </div>
                         <div class="form-group">
                             <label for="revol_util">Revol util</label>
@@ -105,15 +109,11 @@
                         </div>
                         <div class="form-group">
                             <label for="total_acc">Total Acc</label>
-                            <input type="text" name="total_acc" id="total_acc" class="form-control required">
+                            <input type="number" name="total_acc" id="total_acc" class="form-control required">
                         </div>
                         <div class="form-group">
                             <label for="credit_length_yrs">Credit Length (in years)</label>
-                            <input type="text" name="credit_length_yrs" id="credit_length_yrs" class="form-control required">
-                        </div>
-                        <div class="form-group">
-                            <label for="default_loan">Default Loan</label>
-                            <input type="text" name="default_loan" id="default_loan" class="form-control required">
+                            <input type="number" name="credit_length_yrs" id="credit_length_yrs" class="form-control required">
                         </div>
                     </div>
 
@@ -122,7 +122,7 @@
                         <h3 class="main_question">Loan info continuation...</h3>
                         <div class="form-group add_top_30">
                             <label for="int_rate">Int Rate</label>
-                            <input type="text" name="int_rate" id="int_rate" class="form-control required" onchange="getVals(this, 'name_field');">
+                            <input type="number" name="int_rate" id="int_rate" class="form-control required" onchange="getVals(this, 'name_field');">
                         </div>
                         <div class="form-group">
                             <label for="remain">Remain</label>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="form-group">
                             <label for="issue_year">Issue Year</label>
-                            <input type="text" name="issue_year" id="issue_year" class="form-control required">
+                            <input type="number" name="issue_year" id="issue_year" class="form-control required">
                         </div>
                         <div class="form-group">
                             <label for="cri">CRI</label>
@@ -141,6 +141,9 @@
                 </div>
                 <!-- /middle-wizard -->
                 <div id="bottom-wizard">
+                    <button type="button" name="" class="btn">
+                        <a href="" >Reset</button>
+                    </button>
                     <button type="button" name="backward" class="backward">Prev</button>
                     <button type="button" name="forward" class="forward">Next</button>
                     <button type="submit" name="process" class="submit check-loan">Submit</button>
@@ -168,7 +171,24 @@
             headers : {
                 "X-CSRFToken" : "{{csrf_token}}"
             },
-            data : {},
+            data : {
+                'term_months': $("#term_months").val(),
+                'home_ownership' : $("#home_ownership option:selected").val(),
+                'purpose' : $('#purpose').val(),
+                'address_state' : $("#address_state").val(),
+                'loan_amount' : $("#loan_amount").val(),
+                'emp_length' : $("#emp_length").val(),
+                'annual_inc' : $("#annual_inc").val(),
+                'dti' : $("#dti").val(),
+                'delinq_2yrs' : $("#delinq_2yrs").val(),
+                'revol_util' : $('#revol_util').val(),
+                'total_acc' : $('#total_acc').val(),
+                'credit_length_yrs' : $("#credit_length_yrs").val(),
+                'int_rate' : $("#int_rate").val(),
+                'remain' : $("#remain").val(),
+                'issue_year' : $("#issue_year").val(),
+                'cri' : $("#cri").val()
+            },
             success : res => {
                 $("#result").html(`
                 <div class="alert alert-${res.status ? "success" : "danger"} w-100 m-0">
