@@ -11,7 +11,7 @@ class IndexView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         data = {
-            "msg" : "Loan applicant will default",
+            "msg" : "Loan applicant will default [1]",
             'status' : False
         }
 
@@ -34,7 +34,7 @@ class IndexView(TemplateView):
         default = random.randint(0, 1)
 
         if default == 0:
-            data["status"] = default
-            data["msg"] = "Loan applicant will not default"
+            data["status"] = True
+            data["msg"] = "Loan applicant will not default [0]"
 
         return JsonResponse(data, safe=False)

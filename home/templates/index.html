@@ -3,6 +3,11 @@
 
 {% block page_title %}Home{% endblock page_title %}
 {% block body %}
+<style>
+    .alert-primary{
+        background : #1dbe72!important;
+    }
+</style>
 <div class="row row-height">
     <div class="col-xl-4 col-lg-4 content-left">
         <div class="content-left-wrapper">
@@ -191,15 +196,15 @@
             },
             success : res => {
                 $("#result").html(`
-                <div class="alert alert-${res.status ? "success" : "danger"} w-100 m-0">
-                    <p class="text-white m-0">${res.msg}</p>
+                <div class="alert alert-primary w-100 m-0">
+                    <p class="text-white m-0 fw-bolder">${res.msg}</p>
                 </div>
                 `)
             },
             error : err => {
                 $("#result").html(`
                 <div class="alert alert-danger w-100 m-0">
-                    <p class="text-white m-0">Error processing result</p>
+                    <p class="text-white m-0">Error processing loan application</p>
                 </div>
                 `)
             }
