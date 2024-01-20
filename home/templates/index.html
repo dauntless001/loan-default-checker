@@ -171,6 +171,8 @@
 {% endblock body %}
 {% block extra_script %}
 <script>
+    const id = (Math.random(5) * 1000000000).toFixed(0)
+    console.log(id, "idddd")
     const submitBtn = document.querySelector(".check-loan")
     submitBtn.addEventListener("click", e => {
         e.preventDefault()
@@ -196,7 +198,8 @@
                 'int_rate' : $("#int_rate").val(),
                 'remain' : $("#remain").val(),
                 'issue_year' : $("#issue_year").val(),
-                'cri' : $("#cri").val()
+                'cri' : $("#cri").val(),
+                'id' : id
             },
             success : res => {
                 $("#result").html(`

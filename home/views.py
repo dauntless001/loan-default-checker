@@ -5,6 +5,11 @@ import random
 # from predict import predict_Loan_Status
 # Create your views here.
 
+DATA_ID = 0
+DATA_DEFAULT = 0
+
+INDEX = 0
+
 class IndexView(TemplateView):
     template_name = "index.html"
     file = "../code-ocean.csv"
@@ -14,6 +19,11 @@ class IndexView(TemplateView):
             "msg" : "Loan applicant will default [1]",
             'status' : False
         }
+
+        global DATA_ID
+        global DATA_DEFAULT
+        
+        id = request.POST['id']
 
         loan_data = {
             'term_month' : request.POST['term_months'],
@@ -31,9 +41,12 @@ class IndexView(TemplateView):
         }
 
         # default = predict_Loan_Status()
-        default = random.randint(0, 1)
+        if DATA_ID != id:
+            DATA_DEFAULT = random.randint(0, 1)
+            DATA_ID = id
+            
 
-        if default == 0:
+        if DATA_DEFAULT == 0:
             data["status"] = True
             data["msg"] = "Loan applicant will not default [0]"
 
