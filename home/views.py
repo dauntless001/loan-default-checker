@@ -33,7 +33,7 @@ class IndexView(TemplateView):
         # default = predict_Loan_Status()
         default = random.randint(0, 1)
 
-        if default == 1:
+        if default == 0:
             data["status"] = default
             data["msg"] = "Loan applicant will not default"
 
