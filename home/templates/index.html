@@ -66,14 +66,14 @@
                             <input type="text" name="address_state" id="address_state" class="form-control required">
                         </div>
                         <div class="form-group add_top_30">
-                            <label for="application_type">Application type</label>
+                            <label for="verification_status">Verification status</label>
                             <div class="form-group radio_input">
                                 <label class="container_radio me-3">Verified
-                                    <input type="radio" name="application_type" value="Verified" class="required">
+                                    <input type="radio" name="verification_status" value="Verified" class="required">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="container_radio">Not Verified
-                                    <input type="radio" name="application_type" value="Not Verified" class="required">
+                                    <input type="radio" name="verification_status" value="Not Verified" class="required">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -83,6 +83,10 @@
                     <div class="step">
                         <!-- <h2 class="section_title">Loan Application</h2> -->
                         <h3 class="main_question">Loan info continuation...</h3>
+                        <div class="form-group">
+                            <label for="application_type">Application type</label>
+                            <input type="text" name="application_type" id="application_type" class="form-control required">
+                        </div>
                         <div class="form-group">
                             <label for="loan_amount">Loan Amount</label>
                             <input type="number" name="loan_amount" id="loan_amount" class="form-control required">
